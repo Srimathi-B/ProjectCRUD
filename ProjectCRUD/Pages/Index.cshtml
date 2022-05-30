@@ -1,0 +1,75 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@if (User.Identity.IsAuthenticated)
+{
+
+    <h4>@Model.ErrorMessage</h4>
+
+    <div class="row">
+        <div class="col-md-4 col-xl-4">
+            <div class="card bg-c-blue db-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Books</h6>
+                    <h2 class="text-end"><i class=" float-start"></i><span>@Model.BookCount</span></h2>
+                    <p class="m-b-0"> <span class="f-right"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-xl-4">
+            <div class="card bg-c-green db-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Categories</h6>
+                    <h2 class="text-end"><i class="fa fa-building float-start"></i><span>@Model.CategoryCount</span></h2>
+                    <p class="m-b-0"> <span class="float-end"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-xl-4">
+            <div class="card bg-c-pink db-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Member</h6>
+                    <h2 class="text-end"><i class="fa fa-person float-start"></i><span>@Model.MemberCount</span></h2>
+                    <p class="m-b-0"><span class="float-end">@Model.MemberCount</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+else
+{
+    <br />
+    <br />
+    <br />
+
+    <div class=" row text-center">
+        <div class="row">
+            <h1 class="text-center">
+                Welcome to E-Library Management System <br />
+                <br />
+            </h1>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <h5 class="align-content-between">
+                <a href="/Login" class="btn btn-primary" role="button">Login Admin/User</a>
+            </h5>
+        </div>
+        <br />
+        <div class="row">
+            <h5>
+                <a href="/Register" class="btn btn-secondary" role="button">Register New User</a>
+            </h5>
+        </div>
+        <br />
+    <br />
+    <br />
+    </div>
+    
+}

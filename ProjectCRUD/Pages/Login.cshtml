@@ -1,0 +1,29 @@
+﻿@page
+@model ProjectCRUD.Pages.LoginModel
+@{
+}
+<form method="post" class="shadow">
+    <div class="form-group">
+    <label asp-for=@Model.UserName ></label>
+    <input type="text" asp-for=@Model.UserName class="form-control"/>
+    
+    </div>
+    <div class="form-group">
+        <label asp-for=@Model.Password></label>
+        <input type="password" asp-for="@Model.Password" class="form-control"/>
+        
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a href="/Index" class="btn btn-secondary" role="button">Logout</a>
+        
+        
+    </div>
+    <div class="form-group">
+       
+        <h6 class="text-danger">@Model.ErrorMessage</h6>
+    </div>
+
+</form>
+
+

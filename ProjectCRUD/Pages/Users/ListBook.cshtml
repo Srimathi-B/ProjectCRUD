@@ -1,0 +1,83 @@
+﻿@page
+@model ProjectCRUD.Pages.Users.ListBookModel
+@{
+}
+<form method="post" class="shadow-lg p-3 mb-5 bg-white rounded">
+    <br />
+    <div class="row">
+        <div class="col-sm-10"><h5>List of Books</h5></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mx-auto">
+            <div class="input-group">
+                <input class="form-control border rounded-pill"
+                       type="search" placeholder="type search text" id="example-search-input"
+                       asp-for="@Model.SearchText">
+                <span class="input-group-append">
+                    <button class="btn btn-outline-primary bg-white border rounded-pill ms-n5"
+                            type="submit" asp-page-handler="Search">
+                        <i class="fa fa-search"></i>
+                    </button>
+                    <button class="btn btn-outline-dark bg-white border rounded-pill ms-n5"
+                            type="submit" asp-page-handler="Clear">
+                        <i class="fa fa-remove"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <h6 class="text-success">@Model.SuccessMessage</h6>
+        <h6 class="text-danger">@Model.ErrorMessage</h6>
+        <h6 class="text-danger">@Html.ValidationSummary()</h6>
+    </div>
+    <br />
+
+<table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">BookName</th>
+                <th scope="col">AuthorName</th>
+                <th scope="col">PublishedYear</th>
+                <th scope="col">Price</th>
+                <th scope="col">Status</th>
+                <th scope="col">CategoryName</th>
+                <th scope="col">Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Books == null || Model.Books.Count <= 0)
+            {
+                <tr>
+                    <td>No Employee Found</td>
+                </tr>
+            }
+            else
+            {
+            @foreach (var d in Model.Books)
+            {
+                <tr>
+                    <td>@d.Id</td>
+                    <td>@d.BookName</td>
+                    <td>@d.AuthorName</td>
+                    <td>@d.PublishedYear</td>
+                    <td>@d.Price</td>
+                    <td>@d.Status</td>
+                    <td>@d.CategoryName</td>
+                    <td>
+                       <a href="/Users/PayFees" class="col btn btn-primary ms-3" role="button">PayFees</a>
+                    </td>
+                    <td>
+                       <a href="/Users/Download" class="col btn btn-default border-secondary ms-3" role="button">Download</a>
+                    </td>
+                    <td>
+                       <a href="/Users/View" class="col btn btn-secondary ms-3" role="button">View Only</a>
+                    </td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+    </form>

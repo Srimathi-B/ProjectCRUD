@@ -1,0 +1,54 @@
+﻿@page
+@model ProjectCRUD.Pages.Members.AddModel
+@{
+}
+<h3>ADD NEW ADMIN</h3>
+<form method="post" class="shadow-lg p-3 mb-5 bg-white rounded">
+   <div class="form-group">
+        <label asp-for="@Model.FirstName"></label>
+        <input asp-for="@Model.FirstName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.LastName"></label>
+        <input asp-for="@Model.LastName" class="form-control" />
+    </div>
+     <div class="form-group">
+        <label asp-for="@Model.DOB"></label>
+        <input asp-for="@Model.DOB" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Gender"></label>
+        @foreach (var g in Model.Genders)
+        {
+            <div class="form-check form-check-inline">
+                <input type="radio" asp-for="@Model.Gender" value="@g.Value" />
+                @g.Text
+            </div>
+        }
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.EmailId"></label>
+        <input asp-for="@Model.EmailId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.MobileNumber"></label>
+        <input asp-for="@Model.MobileNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.UserName"></label>
+        <input asp-for="@Model.UserName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Password"></label>
+        <input type="password" asp-for="@Model.Password" class="form-control" />
+    </div>
+    <div class="form-group">
+        <h6 class="text-success">@Model.SuccessMessage</h6>
+        <h6 class="text-danger">@Model.ErrorMessage</h6>
+        <h6 class="text-danger">@Html.ValidationSummary()</h6>
+    </div>
+    <div class="row gx-0">
+        <button type="submit" class="col btn btn-success ms-3">Add Member</button>
+        <a href="/Members/List" class="col btn btn-default border-secondary ms-3" role="button">Cancel</a>
+    </div>
+</form>

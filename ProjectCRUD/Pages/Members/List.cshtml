@@ -1,0 +1,75 @@
+﻿@page
+@model ProjectCRUD.Pages.Members.ListModel
+@{
+}
+<div class="row">
+        <div class="col-sm-10"><h5>List all Members</h5></div>
+         <div class="col-sm-2">
+            <a href="/Members/Add" class="btn btn-success rounded-pill" role="button">ADD
+                
+            </a>
+        </div>
+    </div>
+<form method="post" class="shadow-lg p-3 mb-5 bg-white rounded">
+    <br />
+    <div class="form-group">
+        <h6 class="text-success">@Model.SuccessMessage</h6>
+        <h6 class="text-danger">@Model.ErrorMessage</h6>
+        <h6 class="text-danger">@Html.ValidationSummary()</h6>
+    </div>
+    <br />
+
+<table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">FirstName</th>
+                <th scope="col">LastName</th>
+                <th scope="col">Gender</th>
+                <th scope="col">DOB</th>
+                <th scope="col">EmailId</th>
+                <th scope="col">MobileNumber</th>
+                <th scope="col">MemStatus</th>
+                <th scope="col">UserName</th>
+                <th scope="col">Password</th>
+                <th scope="col">Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Members == null || Model.Members.Count <= 0)
+            {
+                <tr>
+                    <td>No Employee Found</td>
+                </tr>
+            }
+            else
+            {
+            @foreach (var d in Model.Members)
+            {
+                <tr>
+                    <td>@d.Id</td>
+                    <td>@d.FirstName</td>
+                    <td>@d.LastName</td>
+                    <td>@d.Gender</td>
+                    <td>@d.DOB</td>
+                    <td>@d.EmailId</td>
+                    <td>@d.MobileNumber</td>
+                    <td>@d.MemStatus</td>
+                    <td>@d.UserName</td>
+                    <td>@d.Password</td>
+                    <td>
+                        <a href="/Members/Edit/@d.Id" class="btn btn-outline-warning" role="button">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="/Members/Activation/@d.Id" class="btn btn-outline-success" role="button">
+                            <i class="fa fa-toggle-on"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+    </form>

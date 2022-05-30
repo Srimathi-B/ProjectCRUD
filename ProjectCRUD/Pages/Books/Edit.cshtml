@@ -1,0 +1,40 @@
+﻿@page "{id}"
+@model ProjectCRUD.Pages.Books.EditModel
+@{
+}
+<h3>Edit Book</h3>
+<form method="post" class="shadow-lg p-3 mb-5 bg-white rounded">
+   <div class="form-group">
+        <label asp-for="@Model.BookName"></label>
+        <input asp-for="@Model.BookName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.AuthorName"></label>
+        <input asp-for="@Model.AuthorName" class="form-control" />
+    </div>
+     <div class="form-group">
+        <label asp-for="@Model.PublishedYear"></label>
+        <input asp-for="@Model.PublishedYear" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Price"></label>
+        <input asp-for="@Model.Price" class="form-control" />
+    </div>
+    <div class="form-group col">
+            <label asp-for="@Model.Status"></label>
+            <select asp-for="@Model.Status" asp-items="@Model.StatusList" class="form-select"></select>
+    </div>
+        <div class="form-group col">
+            <label asp-for="@Model.CategoryId"></label>
+            <select asp-for="@Model.CategoryId" asp-items="@Model.CategoryList" class="form-select"></select>
+    </div>
+    <div class="form-group">
+        <h6 class="text-success">@Model.SuccessMessage</h6>
+        <h6 class="text-danger">@Model.ErrorMessage</h6>
+        <h6 class="text-danger">@Html.ValidationSummary()</h6>
+    </div>
+    <div class="row gx-0">
+        <button type="submit" class="col btn btn-success ms-3">Edit Book</button>
+        <a href="/Books/List" class="col btn btn-default border-secondary ms-3" role="button">Cancel</a>
+    </div>
+</form>

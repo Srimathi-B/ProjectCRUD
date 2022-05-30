@@ -1,0 +1,31 @@
+﻿@page "{id}"
+@model ProjectCRUD.Pages.Members.ActivationModel
+@{
+}
+<form method="post" class="shadow-lg p-3 mb-5 bg-white rounded">
+    <div class="form-group">
+        <label asp-for="@Model.Plan_Start"></label>
+        <input asp-for="@Model.Plan_Start" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Plan_End"></label>
+        <input asp-for="@Model.Plan_End" class="form-control" />
+    </div>
+    <div class="form-group col">
+            <label asp-for="@Model.SelectedPlanId"></label>
+            <select asp-for="@Model.SelectedPlanId" asp-items="@Model.Plans" class="form-select"></select>
+        </div>
+        <div class="form-group col">
+            <label asp-for="@Model.SelectedMemberStatus"></label>
+            <select asp-for="@Model.SelectedMemberStatus" asp-items="@Model.Members" class="form-select"></select>
+        </div>
+    <div class="form-group">
+        <h6 class="text-success">@Model.SuccessMessage</h6>
+        <h6 class="text-danger">@Model.ErrorMessage</h6>
+        <h6 class="text-danger">@Html.ValidationSummary()</h6>
+    </div>
+    <div class="row gx-0">
+        <button type="submit" class="col btn btn-success ms-3">Submit</button>
+        <a href="/Members/List" class="col btn btn-default border-secondary ms-3" role="button">Back</a>
+    </div>
+</form>
